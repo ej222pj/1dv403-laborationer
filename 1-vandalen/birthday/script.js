@@ -4,13 +4,13 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-        var mili = new Date().getTime();
-        var sec// = mili / 1000;
-        var min //= sec / 60;
-        var hour// = min / 60;
-        var day// = hour / 24;
+        /*var mili = new Date().getTime();
+        var sec = mili / 1000;
+        var min = sec / 60;
+        var hour = min / 60;
+        var day = hour / 24;*/
         var todaysDate = new Date();
-        var next = new Date(date);
+        var nextBirthday = new Date(date);
         /*var dateYear = "";
         var dateMon = "";
         var dateDay = "";
@@ -23,20 +23,11 @@ window.onload = function(){
             else if(i > 7)
                 dateDay += date[i];
         }*/
-    var diff = todaysDate.getTime() - next.getTime();
-    var diffInDays = ((((diff / 1000)/60)/60)/24)
-    diffInDays = diff / 1000
-    sec = diffInDays % 60
-    diffInDays /= 60
-    min = diffInDays % 60
-    diffInDays /= 60
-    hour = diffInDays % 24
-    diffInDays /= 24
-    day = diffInDays
-        
-            
-        return diffInDays
+        var yearsDiff =  todaysDate.getFullYear() - nextBirthday.getFullYear();
+        var diff = (nextBirthday.getTime() - todaysDate.getTime()) + (((((yearsDiff*365.25)*24)*60)*60)*1000);
+        var diffInDays = ((((diff / 1000)/60)/60)/24);
 
+        return diffInDays
 	};
 	// ------------------------------------------------------------------------------
 
