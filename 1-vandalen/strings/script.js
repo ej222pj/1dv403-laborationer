@@ -10,17 +10,19 @@ window.onload = function(){
 		var newStr = "";
 	for(var i = 0; i < str.length; i++)
 	{
-        if(str[i] == str[i].toLowerCase())
+        if(str[i] == "a" || str[i] == "A")//a till #
+        {
+            newStr += "#";
+        }
+        else if(str[i] == str[i].toLowerCase())//Små till stora
         {
             newStr += str[i].toUpperCase();
         }
-        else if(str[i] == str[i].toUpperCase())
+        else if(str[i] == str[i].toUpperCase())//stora till små
         {
             newStr += str[i].toLowerCase();
         }
 	}
-
-
     return newStr;
 
 
