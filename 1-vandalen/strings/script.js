@@ -8,21 +8,26 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 		var newStr = "";
-	for(var i = 0; i < str.length; i++)
-	{
-        if(str[i] == "a" || str[i] == "A")//a till #
+	if(!str.length){
+        throw new Error ("Din inmatning är tom!");
+    }
+    else{
+        for(var i = 0; i < str.length; i++)//Kollar en bokstav i taget, hela strängen.
         {
-            newStr += "#";
+            if(str[i] == "a" || str[i] == "A")//a till #
+            {
+                newStr += "#";
+            }
+            else if(str[i] == str[i].toLowerCase())//Små till stora
+            {
+                newStr += str[i].toUpperCase();
+            }
+            else if(str[i] == str[i].toUpperCase())//stora till små
+            {
+                newStr += str[i].toLowerCase();
+            }
         }
-        else if(str[i] == str[i].toLowerCase())//Små till stora
-        {
-            newStr += str[i].toUpperCase();
-        }
-        else if(str[i] == str[i].toUpperCase())//stora till små
-        {
-            newStr += str[i].toLowerCase();
-        }
-	}
+    }
     return newStr;
 
 
