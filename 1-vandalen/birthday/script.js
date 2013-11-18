@@ -5,23 +5,32 @@ window.onload = function(){
 	
 	var birthday = function(date){
 	    
-        var todaysDate = new Date();
-        var nextBirthday = new Date(date);
+        var todaysDate = new Date();//Milisec sedan 1970
+        var nextBirthday = new Date(date);//Milisec fram till användarens födelsedag
         
         var dateFormat=/^\d{4}\-\d{2}\-\d{2}$/;    
         if(!date.match(dateFormat)) {
 	        throw new Error ("Din inmatning är inte skriven med den rätta formen ÅÅÅÅ-MM-DD!"); 
 	    }
+	    
         var yearsDiff =  todaysDate.getFullYear() - nextBirthday.getFullYear();//Tar fram hur många år användaren är.
-        //Min födelsedag minus millisec sen 1970. plus mina år i millisec
+        //användarens födelsedag minus millisec sen 1970. plus användarens år i millisec
         var diff = (nextBirthday.getTime() - todaysDate.getTime()) + (((((yearsDiff*365.25)*24)*60)*60)*1000);//year/day/hour/min/sec/milisec
         var diffInDays = ((((diff / 1000)/60)/60)/24);//sec/min/hour/day
 
-
-
+        //Om Användaren redan har fyllt år ränkar den fram hur många dagar till nästa födelsedag
+        if(diffInDays < 0){
+            var daysInYear
+            if(todaysDate.getFullYear() % 4 === 0 && (todaysDate.getFullYear() % 100 !== 0 || todaysDate.getFullYear() % 400 === 0)) {
+            // Leap year
+            daysInYear = 366;
+            } else {
+                // Not a leap year
+                daysInYear = 365;
+            }
+            diffInDays = daysInYear + diffInDays;
+        }
         return Math.ceil(diffInDays)
-         
-        
 	};
 	// ------------------------------------------------------------------------------
 
