@@ -6,18 +6,21 @@ window.onload = function(){
 	var guessCount = 0;
 
 	var guess = function(number){
-        guessCount++;
+        
         
 		if(number == secret)
         {
+            guessCount++;
             return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + guessCount + " gissningar för att hitta det."];
         }
         else if(number < secret)
         {
+            guessCount++;
             return [false, "Det hemliga talet är högre!"];
 		}
 		else if(number > secret)
         {
+            guessCount++;
             return [false, "Det hemliga talet är lägre!"];
 		}
 		else

@@ -4,30 +4,24 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-        /*var mili = new Date().getTime();
-        var sec = mili / 1000;
-        var min = sec / 60;
-        var hour = min / 60;
-        var day = hour / 24;*/
+	    
         var todaysDate = new Date();
         var nextBirthday = new Date(date);
-        /*var dateYear = "";
-        var dateMon = "";
-        var dateDay = "";
-       for(var i = 0; i < date.length; i++)
-        {
-            if(i < 4)
-                dateYear += date[i];
-            else if(i > 4 && i < 7)
-                dateMon += date[i];
-            else if(i > 7)
-                dateDay += date[i];
-        }*/
-        var yearsDiff =  todaysDate.getFullYear() - nextBirthday.getFullYear();
-        var diff = (nextBirthday.getTime() - todaysDate.getTime()) + (((((yearsDiff*365.25)*24)*60)*60)*1000);
-        var diffInDays = ((((diff / 1000)/60)/60)/24);
+        
+        var dateFormat=/^\d{4}\-\d{2}\-\d{2}$/;    
+        if(!date.match(dateFormat)) {
+	        throw new Error ("Din inmatning är inte skriven med den rätta formen ÅÅÅÅ-MM-DD!"); 
+	    }
+        var yearsDiff =  todaysDate.getFullYear() - nextBirthday.getFullYear();//Tar fram hur många år användaren är.
+        //Min födelsedag minus millisec sen 1970. plus mina år i millisec
+        var diff = (nextBirthday.getTime() - todaysDate.getTime()) + (((((yearsDiff*365.25)*24)*60)*60)*1000);//year/day/hour/min/sec/milisec
+        var diffInDays = ((((diff / 1000)/60)/60)/24);//sec/min/hour/day
 
-        return diffInDays
+
+
+        return Math.ceil(diffInDays)
+         
+        
 	};
 	// ------------------------------------------------------------------------------
 
