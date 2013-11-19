@@ -16,7 +16,6 @@ var makePerson = function(persArr){
         else{
             return true;
         }
-        
     })){
         throw new Error("FEL! Objekten i arrayen måste ha egenskapen name!");
     }
@@ -33,15 +32,28 @@ var makePerson = function(persArr){
     })){
         throw new Error("FEL! Objekten i arrayen måste innehålla egenskaperna born och age!");  
     }
+    
     // Tar ut alla namn, sorterar med och lägger den i en stäng.
-    var sortNames = persArr.map(function(names){ return names.name }).sort(function(a, b) { return a.localeCompare(b); });//Plockar ut namnen 
-    var sortedNames = sortNames.reduce(function (name1, name2) { return name1 + ", " + name2 });//Sorterar namnen i bokstavsordning
+    //Plockar ut namnen
+    var sortNames = persArr.map(function(names){
+        return names.name 
+    }).sort(function(a, b){
+        return a.localeCompare(b); 
+    }); 
+    //Sorterar namnen i bokstavsordning    
+    var sortedNames = sortNames.reduce(function (name1, name2){
+        return name1 + ", " + name2 
+    });
     
     // Tar fram den högsta och den minsta åldern samt medelåldern.
-    persArr.sort(function(pers1, pers2) { return pers1.age - pers2.age; });
+    persArr.sort(function(pers1, pers2){
+        return pers1.age - pers2.age; 
+    });
     var minAge = persArr[0].age;
     var maxAge = persArr[persArr.length - 1].age;
-    var averageAge = Math.round(persArr.map(function(human) { return human.age }).reduce( function (a, b) { return a + b }) / persArr.length);    
+    var averageAge = Math.round(persArr.map(function(human){
+        return human.age 
+    }).reduce( function (a, b) { return a + b }) / persArr.length);    
 
     
     result = { minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: sortedNames };
