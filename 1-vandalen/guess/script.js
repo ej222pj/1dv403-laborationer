@@ -13,19 +13,19 @@ window.onload = function(){
             guessCount++;
             return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + guessCount + " gissningar för att hitta det."];
         }
-        else if(number < secret)
+        else if(number < secret && number > 0)
         {
             guessCount++;
             return [false, "Det hemliga talet är högre!"];
 		}
-		else if(number > secret)
+		else if(number > secret && number < 101)
         {
             guessCount++;
             return [false, "Det hemliga talet är lägre!"];
 		}
 		else
 		{
-            return [false, "Talet är utanför intervallet 0 - 100"];
+            return [false, "Talet är utanför intervallet 1 - 100"];
 		}
 	};
 	

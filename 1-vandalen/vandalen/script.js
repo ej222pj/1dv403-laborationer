@@ -2,23 +2,7 @@
 // Skriv din kod här.... Skapa funktion "makePerson" som en global funktion.
 var makePerson = function(persArr){
     var result = {};
-    
-    if(!persArr instanceof Array){
-        throw new Error("FEL! Du måste skicka en array som argument!");
-    }
-    if(!persArr[0]){
-        throw new Error("FEL! Du måste skicka med objekt i Arrayen!");
-    }
-    if(persArr.every(function(names){ 
-        if('name' in names && typeof names.name === 'string'){
-            return false;
-        }
-        else{
-            return true;
-        }
-    })){
-        throw new Error("FEL! Objekten i arrayen måste ha egenskapen name!");
-    }
+  
     if(persArr.every(function (age){
         if('age' in age && typeof age.age === 'number'){
             return false;
@@ -30,7 +14,24 @@ var makePerson = function(persArr){
             return true;
         }
     })){
-        throw new Error("FEL! Objekten i arrayen måste innehålla egenskaperna born och age!");  
+        throw new Error("Objekten i arrayen måste innehålla egenskaperna born och age!");  
+    }
+    
+    if(!persArr instanceof Array){
+        throw new Error("Du måste skicka en array som argument!");
+    }
+    if(!persArr[0]){
+        throw new Error("Du måste skicka med objekt i Arrayen!");
+    }
+    if(persArr.every(function(names){ 
+        if('name' in names && typeof names.name === 'string'){
+            return false;
+        }
+        else{
+            return true;
+        }
+    })){
+        throw new Error("Objekten i arrayen måste ha egenskapen name!");
     }
     
     // Tar ut alla namn, sorterar med och lägger den i en stäng.

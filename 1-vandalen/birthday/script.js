@@ -19,7 +19,7 @@ window.onload = function(){
         var diffInDays = ((((diff / 1000)/60)/60)/24);//sec/min/hour/day
 
         //Om Användaren redan har fyllt år ränkar den fram hur många dagar till nästa födelsedag
-        if(diffInDays < 0){
+        if(diffInDays <= -1){
             var daysInYear
             if(todaysDate.getFullYear() % 4 === 0 && (todaysDate.getFullYear() % 100 !== 0 || todaysDate.getFullYear() % 400 === 0)) {
             // Leap year
