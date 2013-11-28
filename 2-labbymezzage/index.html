@@ -2,10 +2,37 @@
 <html lang="sv">
 <head>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="Css/style.css" />
  	<title>JavaScript - Laboration 2 - Labbymezzage</title>
-
 </head>
     <body>
+    <div id="container">
+            <header></header>
+            
+        <main>
+                <!-- Visar meddelanden här -->
+            <section id="message-board">
+            </section>
+        </main>
+        
+        <footer>
+            <section class="formSection">
+                <div id="msgCount">
+                    <p id="count">Antal meddelanden: </p>
+                </div>
+                <form>
+                            <!-- Skriver dina meddelanden -->
+                        <textarea id="message-area" name="message">
+                            
+                        </textarea>
+                    
+                    <div class="row">
+                        <input id="submit-button" type="submit" value="Skicka"/>
+                    </div>
+                </form>
+            </section>
+        </footer>
+    </div>
 
      <script src="javascript/Message.js"></script>
       <script src="javascript/MessageBoard.js"></script>
