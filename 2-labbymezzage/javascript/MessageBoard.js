@@ -55,12 +55,13 @@
         renderMessages: function(){
             //Ta bort meddelanden
             showMessage.innerHTML = "";
-            
+            MessageBoard.EmptyTheTextField();
             //Skriver meddelanden
             for(var i = MessageBoard.messages.length -1; i >= 0; --i){
                 MessageBoard.renderMessage(i);
             }
             messageCount.innerHTML = "Antal meddelanden: " + MessageBoard.messages.length;
+            
         },
         
         deleteMessage: function(id){
@@ -70,7 +71,7 @@
         timeMessage: function(id){
             alert("Meddelandet skapades " + MessageBoard.messages[id].getDate().toLocaleString());
         },
-        createEmptyTextField: function(){
+        EmptyTheTextField: function(){
             input.value = "";
         }
     };
@@ -98,7 +99,7 @@
         e.preventDefault();
             if(input.value.trim().length === 0)
             {
-                MessageBoard.createEmptyTextField();
+                MessageBoard.EmptyTheTextField();
                 return;
             }
         MessageBoard.createMessage(input.value.trim());
