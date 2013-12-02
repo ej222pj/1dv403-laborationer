@@ -70,6 +70,9 @@
         timeMessage: function(id){
             alert("Meddelandet skapades " + MessageBoard.messages[id].getDate().toLocaleString());
         },
+        createEmptyTextField: function(){
+            input.value = "";
+        }
     };
            
     //Denna functionen lyssnar på om man klickar på skicka knappen
@@ -81,6 +84,27 @@
         }
         MessageBoard.createMessage(input.value.trim());
         MessageBoard.renderMessages();
+    }, false);
+    
+    //Lyssnar om man trycker på enter eller shift enter
+    input.addEventListener("keypress", function (e){
+        e = e || event; //Event är för IE
+        if(e.keyCode !== 13 || e.shiftKey === true)
+        {
+            return;
+        } 
+        else
+        {
+        e.preventDefault();
+            if(input.value.trim().length === 0)
+            {
+                MessageBoard.createEmptyTextField();
+                return;
+            }
+        MessageBoard.createMessage(input.value.trim());
+        MessageBoard.renderMessages();
+        }
+        
     }, false);
     
     //Denna funktionen lyssnar på om man klickar på delete eller time bilderna
@@ -108,5 +132,4 @@
     }
 }, false);
     
-
 }());
