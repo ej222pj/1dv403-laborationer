@@ -1,23 +1,71 @@
 "use strict";
 (function () {
-    var submit = document.getElementById("submit"),
-    input = document.querySelector("#readMessage");
+    var submit = document.querySelector("#submit"),
+    showMessage = document.querySelector("#messagearea"),
+    messageCount = document.querySelector("#count"),
+    input = document.querySelector("form textarea");
     
     var MessageBoard = {
         
         messages: [],
    
      
-        init: function (message){
-            this.messages.push(new Message(message, new Date()));
-            alert(MessageBoard.messages[0].getText());
-        }
+        createMessage: function (text) {
+            this.messages.push(new Message(text, new Date()));
+        },
         
+        renderMessage: function(messageID){
+        var content = document.createElement("div")
+        var mainMessage = document.createElement("div");
+        var picsMessage = document.createElement("div");
+        var footMessage = document.createElement("div");
+        var text = document.createElement("p");
+        var date = document.createElement("p");
+        var deleteLink = document.createElement("a");
+        var deleteImg = document.createElement("img");
+        var timeLink = document.createElement("a");
+        var timeImg = document.createElement("img");
+        
+        content.setAttribute("class", "contentMessage");
+        mainMessage.setAttribute("class", "mainMessage");
+        picsMessage.setAttribute("class", "picsMessage");
+        footMessage.setAttribute("class", "footMessage");
+        deleteLink.setAttribute("href", "#");
+        timeLink.setAttribute("href", "#");
+        deleteImg.setAttribute("src", "pics/delete.png");
+        timeImg.setAttribute("src", "pics/time.png");
+        text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
+        date.innerHTML = MessageBoard.messages[messageID].getDateText();
+        
+        showMessage.appendChild(content)
+        mainMessage.appendChild(text);
+        deleteLink.appendChild(deleteImg);
+        timeLink.appendChild(timeImg);
+        picsMessage.appendChild(deleteLink);
+        picsMessage.appendChild(timeLink);
+        footMessage.appendChild(date);
+        content.appendChild(mainMessage);
+        content.appendChild(picsMessage);
+        content.appendChild(footMessage);
+        
+
+        },
+        
+        renderMessages: function(){
+            //Ta bort meddelanden
+            showMessage.innerHTML = "";
+            
+            //Skriver meddelanden
+            for(var i = MessageBoard.messages.length -1; i >= 0; --i){
+                MessageBoard.renderMessage(i);
+            }
+            messageCount.innerHTML = "Antal meddelanden: " + MessageBoard.messages.length;
+        },
+
     };
-     //window.onload = MessageBoard.init("dasd");
-     
+           
     //Denna functionen lyssnar på om man klickar på skicka knappen
-    submit.addEventListener("onclick", function (e){
+    submit.addEventListener("click", function (e){
         e = e || event; //Event är för IE
         e.preventDefault();
         if((input.value).trim().length === 0){
@@ -27,4 +75,5 @@
         MessageBoard.renderMessages();
     }, false);
     
+
 }());

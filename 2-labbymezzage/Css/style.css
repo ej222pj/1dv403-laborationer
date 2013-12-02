@@ -1,0 +1,62 @@
+body{
+    background-color: orange;
+}
+#container{
+    margin: auto;
+    width: 980px;
+}
+header
+{
+    height: 200px;
+    background-color: #fff;
+}
+main
+{
+    height: 300px;
+    overflow: auto;
+    background-color: #fff;
+    margin-top: 5px;
+}
+    
+footer {
+    width: 100%;
+}
+.formSection {
+    background-color: #fff;
+}
+p
+{
+    margin: 0;
+}
+#msgCount p {
+    
+}
+textarea {
+    height: 300px;
+}
+.contentMessage
+{
+
+}
+.mainMessage
+{
+    float: left;
+    width: 85%;
+    word-wrap: break-word;
+}
+.picsMessage
+{
+    float: right;
+    width: 15%
+}
+.picsMessage a img
+{
+    float: right;
+    width: 30px;
+    height: 30px;
+}
+.footMessage
+{
+    clear: both;
+    text-align: right;
+}
