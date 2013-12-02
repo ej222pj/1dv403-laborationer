@@ -68,7 +68,7 @@
             this.renderMessages();
         },
         timeMessage: function(id){
-            alert(MessageBoard.messages[id].getDateText());
+            alert("Meddelandet skapades " + MessageBoard.messages[id].getDate().toLocaleString());
         },
     };
            
@@ -94,7 +94,7 @@
         id = hit.parentNode.parentNode.parentNode.getAttribute("id");
         // Raderar meddelandet om man trycker på delete.
         if (hit.getAttribute("src") === "pics/delete.png") {
-            confirm = window.confirm("Är du säker på att du vill ta bort meddelandet");
+            confirm = window.confirm("Är du säker på att du vill ta bort meddelandet?");
             if (confirm === false) {
                 return;
             } else {
