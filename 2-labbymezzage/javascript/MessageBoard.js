@@ -27,6 +27,7 @@
         var timeImg = document.createElement("img");
         
         content.setAttribute("class", "contentMessage");
+        content.setAttribute("id", messageID.toString());
         mainMessage.setAttribute("class", "mainMessage");
         picsMessage.setAttribute("class", "picsMessage");
         footMessage.setAttribute("class", "footMessage");
@@ -61,7 +62,14 @@
             }
             messageCount.innerHTML = "Antal meddelanden: " + MessageBoard.messages.length;
         },
-
+        
+        deleteMessage: function(id){
+            this.messages.splice(id, 1);
+            this.renderMessages();
+        },
+        timeMessage: function(id){
+            alert(MessageBoard.messages[id].getDateText());
+        },
     };
            
     //Denna functionen lyssnar på om man klickar på skicka knappen
@@ -74,6 +82,31 @@
         MessageBoard.createMessage(input.value.trim());
         MessageBoard.renderMessages();
     }, false);
+    
+    //Denna funktionen lyssnar på om man klickar på delete eller time bilderna
+    showMessage.addEventListener("click", function (e) {
+    e = e || window.event; // IE-fix
+    e.preventDefault();
+    var hit = e.target;
+    var id;
+    var confirm;
+    if (hit.hasAttribute("src")) {
+        id = hit.parentNode.parentNode.parentNode.getAttribute("id");
+        // Raderar meddelandet om man trycker på delete.
+        if (hit.getAttribute("src") === "pics/delete.png") {
+            confirm = window.confirm("Är du säker på att du vill ta bort meddelandet");
+            if (confirm === false) {
+                return;
+            } else {
+                MessageBoard.deleteMessage(id);
+            }
+        }
+        // Visar tiden om man trycker på tid.
+        else {
+            MessageBoard.timeMessage(id);
+        }
+    }
+}, false);
     
 
 }());
