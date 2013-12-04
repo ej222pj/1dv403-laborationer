@@ -1,9 +1,12 @@
 "use strict";
 var Memory = {
-    init: function(mess){
-        alert(mess);
-    }
+    randomPictures: [],
     
-    
+    init: function(){
+        
+        }
+    },
+
 };
-window.onload = Memory.init("hej de funkar");
+
+window.onload = Memory.init;
