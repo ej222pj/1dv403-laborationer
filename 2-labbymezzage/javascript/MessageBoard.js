@@ -38,20 +38,19 @@
         text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
         date.innerHTML = MessageBoard.messages[messageID].getDateText();
         
-        showMessage.appendChild(content)
-        mainMessage.appendChild(text);
-        deleteLink.appendChild(deleteImg);
-        timeLink.appendChild(timeImg);
-        picsMessage.appendChild(deleteLink);
-        picsMessage.appendChild(timeLink);
-        footMessage.appendChild(date);
-        content.appendChild(mainMessage);
+        showMessage.appendChild(content)//Lägger content innuti IDt messagearea
+        mainMessage.appendChild(text);//Lägger text i mainMessage classen
+        deleteLink.appendChild(deleteImg);//Lägger deletebilden i deletelänken
+        timeLink.appendChild(timeImg);//Lägger tidbilden i tid länken
+        picsMessage.appendChild(deleteLink);//Lägger deletelänken i picsMessage classen
+        picsMessage.appendChild(timeLink);//lägger timelänken i picsMessage classen
+        footMessage.appendChild(date);//Lägger datum i tooMessage classen
+        content.appendChild(mainMessage);//Lägger alla classer i ContenMessage classen som ligger i MessageArea
         content.appendChild(picsMessage);
         content.appendChild(footMessage);
         
 
         },
-        
         renderMessages: function(){
             //Ta bort meddelanden
             showMessage.innerHTML = "";
@@ -63,7 +62,6 @@
             messageCount.innerHTML = "Antal meddelanden: " + MessageBoard.messages.length;
             
         },
-        
         deleteMessage: function(id){
             this.messages.splice(id, 1);
             this.renderMessages();
@@ -71,6 +69,7 @@
         timeMessage: function(id){
             alert("Meddelandet skapades " + MessageBoard.messages[id].getDate().toLocaleString());
         },
+        //Tömmer textfälted när denna functionen ropas på
         EmptyTheTextField: function(){
             input.value = "";
         }
@@ -132,5 +131,4 @@
         }
     }
 }, false);
-    
 }());
