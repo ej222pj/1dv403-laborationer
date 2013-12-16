@@ -1,0 +1,39 @@
+body
+{
+    background-color: #CCC0;    
+}
+#container
+{
+    margin: auto;
+    width: 800px;
+}
+h1
+{
+    text-align: center;
+}
+table
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+}
+button
+{
+    width:100%;
+}
+#game1, #game2, #game3
+{
+    background-color: #FFF;
+    width: 200px;
+    height: auto;
+    float: left;
+    -moz-box-shadow: 0 0 30px 5px #000;
+    -webkit-box-shadow: 0 0 30px 5px #000;
+    border-radius: 5px;
+    border-style: outset;
+}
+#game2
+{
+    margin-left: 40px;
+    margin-right: 40px;
+}
