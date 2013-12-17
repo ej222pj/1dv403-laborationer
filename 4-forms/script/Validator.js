@@ -2,26 +2,30 @@
 window.onload = function(){
     var form = document.getElementById("form");
     var fn = form.elements["fName"];
-    fn.focus();
+    var ln = form.elements["lName"];
+    
     var checkName = /^[A-ZÅÄÖa-zåäö]{1,}$/;
 
-    var errorInfo = document.getElementById("fName");
-    var p = document.createElement("p");
-    errorInfo.appendChild(p);
+    var firstNameInfo = document.getElementById("firstName");
+    var lastNameInfo = document.getElementById("lastName");
+    var firstNameP = document.createElement("p");
+    var lastNameP = document.createElement("p");
+    firstNameInfo.appendChild(firstNameP);
+    lastNameInfo.appendChild(lastNameP);
     
-    var blur = function(infoText) {
+    fn.onblur = function() {
     if(!checkName.test(fn.value)){
-            p.innerHTML = infoText;
+            firstNameP.innerHTML = "Skriv in ditt förnamn";
         }
-    };
-   /* function blur(infoText) {
-        if(!checkName.test(fn.value)){
-            p.innerHTML = infoText;
+    },
+    ln.onblur = function() {
+    if(!checkName.test(ln.value)){
+            lastNameP.innerHTML = "Skriv in ditt efternamn";
         }
-    };*/
-    fn.onblur = blur;
+    },
+
     form.onsubmit = function(e){
-        if(!checkName.test(fn.value)){
+        if(!checkName.test(fn.value) && !checkName.test(ln.value)){
             return false;
         }
         //Returnera false om allt inte går igenom!      
