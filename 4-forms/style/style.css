@@ -5,5 +5,12 @@ body
 #container
 {
     margin: auto;
-    width: 800px;
+    width: 180px;
+}
+p
+{
+    margin-top: 22px;
+    float: right;
+    color: red;
+    font-size: 10px;
 }

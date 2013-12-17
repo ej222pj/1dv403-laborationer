@@ -15,7 +15,7 @@
         },
         
         renderMessage: function(messageID){
-        var content = document.createElement("div")
+        var content = document.createElement("div");
         var mainMessage = document.createElement("div");
         var picsMessage = document.createElement("div");
         var footMessage = document.createElement("div");
@@ -38,7 +38,7 @@
         text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
         date.innerHTML = MessageBoard.messages[messageID].getDateText();
         
-        showMessage.appendChild(content)//Lägger content innuti IDt messagearea
+        showMessage.appendChild(content);//Lägger content innuti IDt messagearea
         mainMessage.appendChild(text);//Lägger text i mainMessage classen
         deleteLink.appendChild(deleteImg);//Lägger deletebilden i deletelänken
         timeLink.appendChild(timeImg);//Lägger tidbilden i tid länken
