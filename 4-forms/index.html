@@ -10,19 +10,19 @@
     <div id="container">
         <form id="form" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post">
         
-            <div class="formTitleArea"><div id="firstName"></div>
-               <div class="formTitle">Förnamn</div> <input class="formTitleFields" name="fName" title="Skriv in ditt förnamn">
-            </div>
-            
-            <div class="formTitleArea"><div id="lastName"></div>
-               <div class="formTitle">Efternamn</div> <input class="formTitleFields" name="Efternamn" title="Skriv in ditt efternamn"></input>
+            <div class="formTitleArea">
+               <div class="formTitle">Förnamn</div> <input class="name" name="firstName" title="Skriv in ditt förnamn">
             </div>
             
             <div class="formTitleArea">
-               <div class="formTitle">Postnummer</div><input class="formTitleFields" name="Postnummer" title="Skriv in ditt postnummer">
+               <div class="formTitle">Efternamn</div> <input class="name" name="lastName" title="Skriv in ditt efternamn">
+            </div>
+            
+            <div class="formTitleArea">
+               <div class="formTitle">Postnummer</div><input class="postalCode" name="postalCode" title="Skriv in ditt postnummer">
             </div>
             <div class="formTitleArea">
-               <div class="formTitle">E-post</div><input class="formTitleFields" name="E-post" title="Skriv in din E-post">
+               <div class="formTitle">E-post</div><input class="email" name="emailAdress" title="Skriv in din E-post">
             </div>
             
             <div class="formTitle">Prismodell</div>
@@ -35,6 +35,6 @@
         <input class="formButton" type="submit" value="Skicka">
         </form>
     </div>
-    <script src="script/Validator.js"></script>
+    <script src="script/validator.js"></script>
     </body>
 </html>
