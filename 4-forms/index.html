@@ -8,32 +8,41 @@
     <body>
 
     <div id="container">
-        <form id="form" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post">
+    <form id="form" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post" target="_blank">
+        <fieldset>
         
-            <div class="formTitleArea">
-               <div class="formTitle">Förnamn</div> <input class="name" name="firstName" title="Skriv in ditt förnamn">
+            <div>
+                <label id="firstName">Förnamn</label>
+                <input type="text" class="name" name="firstName" placeholder="Ditt förnamn" autofocus="autofocus" />
             </div>
             
-            <div class="formTitleArea">
-               <div class="formTitle">Efternamn</div> <input class="name" name="lastName" title="Skriv in ditt efternamn">
+            <div>
+                <label id="lastName">Efternamn</label>
+                <input type="text" class="name" name="lastName" placeholder="Ditt efternamn" />
             </div>
             
-            <div class="formTitleArea">
-               <div class="formTitle">Postnummer</div><input class="postalCode" name="postalCode" title="Skriv in ditt postnummer">
-            </div>
-            <div class="formTitleArea">
-               <div class="formTitle">E-post</div><input class="email" name="emailAdress" title="Skriv in din E-post">
+            <div>
+                <label id="postalCode">Postnummer</label>
+                <input type="text" class="postalCode" name="postalCode" placeholder="Din postkod" />
             </div>
             
-            <div class="formTitle">Prismodell</div>
-            <select class="formScrollFields" name="Type">
-                <option class="formScrollField" value="Låg">Låg</option>
-                <option class="formScrollField" value="Mellan">Mellan</option>
-                <option class="formScrollField" value="Hög">Hög</option>
-            </select>
+            <div>
+                <label id="emailAddress">Emailadress</label>
+                <input type="text" class="email" name="emailAddress" placeholder="Din E-post" />
+            </div>
             
-        <input class="formButton" type="submit" value="Skicka">
-        </form>
+            <div>
+                <label id="priceModel">Prismodell</label>
+                <select name="priceModel">
+                    <option value="Låg">Låg</option>
+                    <option value="Mellan" selected="selected">Mellan</option>
+                    <option value="Hög">Hög</option>
+                </select>
+                </div>
+            
+            <input type="submit" class="button normal radius" value="Genomför köp" />
+        </fieldset>
+    </form>
     </div>
     <script src="script/validator.js"></script>
     </body>
