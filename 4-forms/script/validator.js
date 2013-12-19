@@ -1,11 +1,15 @@
 "use strict";
 (function () {
-    var form = document.getElementById("form");
-
+    var form = document.getElementById("form"),
+        fName = form.elements["firstName"],
+        lName = form.elements["lastName"],
+        postal = form.elements["postalCode"],
+        eMail = form.elements["emailAddress"];
+    
     // Skapar ett error meddelande om man trycker på skicka
     var addError = function (node, text) {
+        removeError(node);
         var label = document.getElementById(node.getAttribute("name")),
-        //var label = form.elements[node].getAttribute("name"),
             explanation = document.createElement("small"),
             explanationText = document.createTextNode(text);
 
@@ -44,21 +48,24 @@
         for (i = 1; i <= form.elements.length - 3; i += 1) {
             // Kolla namnfälten
             if (form.elements[i].getAttribute("class").indexOf("name") !== -1) {
-                if (!controlInput(/^.{1,255}$/, form.elements[i].value)) {
+                if (!controlInput(/^.{1,}$/, form.elements[i].value)) {
                     allValid = false;
                     addError(form.elements[i], "Fältet får inte lämnas blankt.");
                 }
             // Kolla postkodfältet
-            } else if (form.elements[i].getAttribute("class").indexOf("postalCode") !== -1) {
-                if (!controlInput(/^(SE)?[\ ]?[\d]{3}(-|\ )?[\d]{2}$/, form.elements[i].value)) {
+            } 
+            else if (form.elements[i].getAttribute("class").indexOf("postalCode") !== -1) {
+                if (!controlInput(/^(SE|se)?[\ ]?[\d]{3}(-|\ )?[\d]{2}$/, form.elements[i].value)) {
                     allValid = false;
                     addError(form.elements[i], "Fyll i ett korrekt postnummer.");
-                } else {
-                    form.elements[i].value = form.elements[i].value.replace(/(SE|\ |-)/g, "");
+                } 
+                else {//Byter ut SE och mellanslag mot inget
+                    form.elements[i].value = form.elements[i].value.replace(/(SE|se|\ |-)/g, "");
                 }
             // Kolla email fältet
-            } else if (form.elements[i].getAttribute("class").indexOf("email") !== -1) {
-                if (!controlInput(/^\w+([\.\+]?\w+)*@([\w]+)\.([a-zA-Z]{2,6})$/, form.elements[i].value)) {
+            } 
+            else if (form.elements[i].getAttribute("class").indexOf("email") !== -1) {
+                if (!controlInput(/^\w+([\.\+]?\w+)*@([\w]+)\.([a-zA-Z]{2,8})$/, form.elements[i].value)) {
                     allValid = false;
                     addError(form.elements[i], "Fyll i en korrekt e-postadress.");
                 }
@@ -66,6 +73,59 @@
         }
         return allValid;
     };
+    //Onblur functioner
+    fName.onblur = function(){
+        var allValid = true;
+        if (!controlInput(/^.{1,}$/, form.elements[1].value)) {
+            allValid = false;
+            addError(form.elements[1], "Fältet får inte lämnas blankt.");
+        }
+        else{
+            removeError(form.elements[1]);
+            form.elements[1].value = form.elements[1].value.trim();
+        }
+        return allValid;
+    };
+    lName.onblur = function(){
+        var allValid = true;
+        if (!controlInput(/^.{1,}$/, form.elements[2].value)) {
+            allValid = false;
+            addError(form.elements[2], "Fältet får inte lämnas blankt.");
+        }
+        else{
+            removeError(form.elements[2]);
+            form.elements[2].value = form.elements[2].value.trim();
+        }
+        return allValid;
+    };
+    postal.onblur = function(){
+        var allValid = true;
+        if (!controlInput(/^(SE|se)?[\ ]?[\d]{3}(-|\ )?[\d]{2}$/, form.elements[3].value)) {
+            allValid = false;
+            addError(form.elements[3], "Fyll i ett korrekt postnummer.");
+        }
+        else{
+            form.elements[3].value = form.elements[3].value.replace(/(SE|se|\ |-)/g, "");
+        }
+        if(controlInput(/^(SE|se)?[\ ]?[\d]{3}(-|\ )?[\d]{2}$/, form.elements[3].value)){
+            removeError(form.elements[3]);
+            form.elements[3].value = form.elements[3].value.trim();
+        }
+        return allValid;
+    };
+    eMail.onblur = function(){
+        var allValid = true;
+        if (!controlInput(/^\w+([\.\+]?\w+)*@([\w]+)\.([a-zA-Z]{2,8})$/, form.elements[4].value)) {
+            allValid = false;
+            addError(form.elements[4], "Fyll i en korrekt e-postadress.");
+        }
+        else{
+            removeError(form.elements[4]);
+            form.elements[4].value = form.elements[4].value.trim();
+        }
+        return allValid;
+    }
+
     
     var createPopup = function () {
         var div0 = document.createElement("div"),
@@ -83,6 +143,7 @@
 
         div0.setAttribute("id", "overlay");
         div1.setAttribute("id", "popUp");
+        
 
         // Läser data från formuläret till popupen
         for (var i = 1; i <= form.elements.length - 2; i += 1) {
@@ -95,20 +156,20 @@
             p.setAttribute("class", "popUptext");
             text = document.createTextNode(form.elements[i].value);
             p.appendChild(text);
+            div4.setAttribute("class", "popUpInfoText");
             div4.appendChild(p);
-            
         }
-
         accButton.setAttribute("type", "button");
         removeButton.setAttribute("type", "button");
 
-        // Subimt formuläret
+        // Subimt formuläret ligger i popup fönstret
         accButton.addEventListener("click", function (e) {
             removePopup();
             setDisabledAllFields(false);
             form.submit();
             form.reset();
         }, false);
+        // Tar bort popup fönstret
         removeButton.addEventListener("click", function (e) {
             removePopup();
             setDisabledAllFields(false);
@@ -143,27 +204,17 @@
             form.elements[i].disabled = bool;
         }
     };
-
+    //Knappen som ligger på formuläret. 
     form.addEventListener("submit", function (e) {
         e = e || window.event;
         e.preventDefault();
-
-        removeError(form.elements[1]);
-        removeError(form.elements[2]);
-        removeError(form.elements[3]);
-        removeError(form.elements[4]);
-
-        form.elements[1].value = form.elements[1].value.trim();
-        form.elements[2].value = form.elements[2].value.trim();
-        form.elements[3].value = form.elements[3].value.trim();
-        form.elements[4].value = form.elements[4].value.trim();
-
+        for(var i = 1; i < form.elements.length -2; i += 1){
+            removeError(form.elements[i]);
+            form.elements[i].value = form.elements[i].value.trim();
+        }
         if (controlInputs()) {
             setDisabledAllFields(true);
             createPopup();
-        }
-        else{
-            
         }
     }, false);
 }());
