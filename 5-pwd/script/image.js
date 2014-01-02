@@ -36,6 +36,7 @@
         mainImg.setAttribute("src", "pics/icon_sm_img.png");
         mainImg.setAttribute("class", "galleryHeaderPic");
         closeLink.setAttribute("href", "#");
+        close.innerHTML += "X";
         
         closeLink.appendChild(close);
         p.appendChild(headerInfo);
@@ -48,8 +49,20 @@
         div0.appendChild(mainDiv);
         div0.appendChild(footerDiv);
         continer.appendChild(div0);
+        
+        closeLink.addEventListener("click", function(e){
+        e = e || window.event;
+        e.preventDefault();
+        
+        removeGalleryPopup();
+    }, false);
     };
     
+    var removeGalleryPopup = function (){
+        var div0 = document.querySelector(".galleryContainer");
+        
+        continer.removeChild(div0);
+    };
     galleryLink.addEventListener("click", function(e){
         e = e || window.event;
         e.preventDefault();

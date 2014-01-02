@@ -66,6 +66,8 @@ p
     height: 20px;
     float: right;
     background-color: black;
+    margin-right: 20px;
+    text-align: center; 
 }
 .galleryMain
 {
