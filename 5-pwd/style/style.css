@@ -1,9 +1,31 @@
 body
 {
-    background-color: #CCC0;    
+    background-color: #CCC0;   
+    width: 1024px;
+    height: 640px;
+    padding: 0;
+    margin: 0;
+    border: 8px solid black;
 }
 #container
 {
     margin: auto;
-    width: 980px;
+    width: inherit;
+    height: inherit;
+    position: relative;
+}
+.bottomMenu
+{
+    bottom: 0;
+    width: inherit;
+    height: 70px;
+    position: absolute;
+    border: 1px solid;
+}
+.menuPicGallery
+{
+    bottom: 0;
+    position: absolute;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
