@@ -3,8 +3,6 @@ var ImageLoader = function () {
     ImageLoader.prototype.getThumbPics();
 };
 
-// Ser till att ImageViewer ärver från superklassen Window
-ImageLoader.prototype = Object.create(Window.prototype);
 
 // Ajaxanrop som kommer att returnera JSON-sträng med tumnagelbilder 
 ImageLoader.prototype.getThumbPics = function () {
@@ -20,10 +18,10 @@ ImageLoader.prototype.getThumbPics = function () {
             ImageLoader.prototype.renderThumbs(thumbs);
         }).fail(function (jqXHR, textStatus) {
             console.log("Läsfel, status: " + textStatus);
-        }); 
+        });
     });
 };
-
+		
 ImageLoader.prototype.renderThumbs = function (thumbs) {
     var thumbDiv, thumb, a, i, contentDiv = document.querySelector(".galleryMain"), size = setSize(thumbs);
     

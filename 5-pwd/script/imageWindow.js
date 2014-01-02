@@ -13,6 +13,7 @@
     showGalleryImg.appendChild(galleryLink);
     galleryLink.appendChild(galleryImg);
     
+
     var createGalleryPopup = function (){
         var div0 = document.createElement("div"),
         headerDiv = document.createElement("div"),
@@ -24,7 +25,8 @@
         p = document.createElement("p"),
         headerInfo = document.createTextNode("Gallery"),
         close = document.createElement("div"),
-        closeLink = document.createElement("a");
+        closeLink = document.createElement("a"),
+        ajaxLoader = document.createElement("img");
         
         close.setAttribute("class", "closeGallery");
         div0.setAttribute("class", "galleryContainer");
@@ -37,6 +39,8 @@
         mainImg.setAttribute("class", "galleryHeaderPic");
         closeLink.setAttribute("href", "#");
         close.innerHTML += "X";
+        ajaxLoader.setAttribute("id", "ajaxloader");
+        ajaxLoader.setAttribute("src", "pics/ajax-loader.gif");
         
         closeLink.appendChild(close);
         p.appendChild(headerInfo);
@@ -45,6 +49,7 @@
         imgDiv.appendChild(p);
         imgDiv.appendChild(closeLink);
         headerDiv.appendChild(imgDiv);
+        footerDiv.appendChild(ajaxLoader);
         div0.appendChild(headerDiv);
         div0.appendChild(mainDiv);
         div0.appendChild(footerDiv);

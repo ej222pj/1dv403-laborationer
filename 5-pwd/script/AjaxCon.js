@@ -1,6 +1,6 @@
+//Används inte, Hittade bättre lösning
 "Use strict";
 function AjaxCon (url, callback) {
-    "use strict";
     var READY_STATE_UNINITIALIZED = 0,
         READY_STATE_OPENED = 1,
         READY_STATE_SENT = 2,
