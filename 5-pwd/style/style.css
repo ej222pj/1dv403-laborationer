@@ -29,7 +29,7 @@ body
 .galleryContainer
 {
     position: absolute;
-    width: 800px;
+    width: 350px;
     height: 500px;
     margin: 0;
     margin-top: 150px;
@@ -37,8 +37,8 @@ body
 }
 .galleryHeader
 {
-    width: 800px;
-    height: 50px;
+    width: 350px;
+    height: 30px;
     background-color: green; 
     color: #C0C0C0;
 }
@@ -71,14 +71,53 @@ p
 }
 .galleryMain
 {
-    width: 800px;
-    height: 430px;
-    background-color: red;  
+    width: 350px;
+    height: 450px;
+    background-color: red;
+    overflow: auto;
 }
 
 .galleryFooter
 {
-    width: 800px;
+    width: 350px;
     height: 20px;
     background-color: blue;  
+}
+.thumbdiv {
+    display: inline-block;
+    margin: 7px;
+    padding: 7px;
+    text-align: center;
+    border: solid 1px #EEE;  
+    background: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(134,135,140)),
+            color-stop(0.41, rgb(217,217,217)),
+            color-stop(1, rgb(134,135,140))
+        );
+        background: -webkit-linear-gradient(
+            center bottom,
+            color-stop(0, rgb(134,135,140)),
+            color-stop(0.41, rgb(217,217,217)),
+            color-stop(1, rgb(134,135,140))
+        );
+        background: -moz-linear-gradient(
+            center bottom,
+            rgb(134,135,140) 0%,
+            rgb(217,217,217) 41%,
+            rgb(134,135,140) 100%
+        );
+        background: -o-linear-gradient(
+            center bottom,
+            rgb(134,135,140) 0%,
+            rgb(217,217,217) 41%,
+            rgb(134,135,140) 100%
+        );
+        -moz-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;
+    box-shadow: rgba(0,0,0, 0.3) 0 0 8px; 
+    -webkit-border-radius: 5px;  
+    -moz-border-radius: 5px;  
+    border-radius: 5px;
 }
