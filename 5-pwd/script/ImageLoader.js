@@ -3,7 +3,6 @@ var ImageLoader = function () {
     ImageLoader.prototype.getThumbPics();
 };
 
-
 // Ajaxanrop som kommer att returnera JSON-sträng med tumnagelbilder 
 ImageLoader.prototype.getThumbPics = function () {
     // Sätter timer på ajaxanropet, en animerad gif-bild visas om anropet 
@@ -18,31 +17,41 @@ ImageLoader.prototype.getThumbPics = function () {
             ImageLoader.prototype.renderThumbs(thumbs);
         }).fail(function (jqXHR, textStatus) {
             console.log("Läsfel, status: " + textStatus);
-        });
+        }); 
     });
 };
 		
 ImageLoader.prototype.renderThumbs = function (thumbs) {
-    var thumbDiv, thumb, a, i, contentDiv = document.querySelector(".galleryMain"), size = setSize(thumbs);
-    
+    var thumbDiv, thumb, a, i, contentDiv = document.querySelector(".galleryMain"), size = setSize(thumbs), url;
+
     for (i = 0; i < thumbs.length; ++i) {
         // Skapar boxar till tumnaglarna    
         thumbDiv = document.createElement("div");
         thumbDiv.className = "thumbdiv";
         thumbDiv.style.width = size.width + "px";
         thumbDiv.style.height = size.height + "px";
+        
+        url = thumbs[i].URL;
     
         // Skapar tumnagelbilder
         thumb = document.createElement("img");
         a = document.createElement("a");
         a.setAttribute("href", "#");
+        a.setAttribute("id", i);
         thumb.src = thumbs[i].thumbURL;
-    
         a.appendChild(thumb);
         thumbDiv.appendChild(a);
         contentDiv.appendChild(thumbDiv);
-    } 
-    
+
+        setBackground(url);
+    }
+    function setBackground(i) {
+        a.onclick=function() {
+            var hej = "\'url( " + i + "\")\'";
+            document.getElementById("container").style.backgroundImage = hej;
+        };
+    }
+
     // Tar fram tumnagelns bredd och höjd
     function setSize(thumbs) {
         var width = 0,

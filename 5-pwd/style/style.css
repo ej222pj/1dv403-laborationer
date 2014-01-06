@@ -4,7 +4,7 @@ body
 }
 #container
 {
-    background-color: #FFF;  
+    background-image:url("../pics/back.jpg");
     margin: auto;
     width: 1400px;
     height: 800px;
