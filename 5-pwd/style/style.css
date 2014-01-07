@@ -17,7 +17,9 @@ body
     width: inherit;
     height: 70px;
     position: absolute;
-    border: 1px solid;
+    border-top: 1px solid;
+    background-color: #2A8FEB;
+    opacity: 0.9;
 }
 .menuPicGallery
 {
@@ -30,17 +32,44 @@ body
 {
     position: absolute;
     width: 350px;
-    height: 500px;
+    height: auto;
     margin: 0;
     margin-top: 150px;
     margin-left: 100px;
+    border: 3px solid;
+    border-radius: 5px;
+    background-color: rgb(217,217,217);
 }
 .galleryHeader
 {
     width: 350px;
     height: 30px;
-    background-color: green; 
-    color: #C0C0C0;
+    color: #FFF;
+       background: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(134,135,140)),
+            color-stop(0, rgb(217,217,217)),
+            color-stop(1, rgb(134,135,140))
+        );
+        background: -webkit-linear-gradient(
+            top,
+            color-stop(0, rgb(134,135,140)),
+            color-stop(0, rgb(217,217,217)),
+            color-stop(1, rgb(134,135,140))
+        );
+        background: -moz-linear-gradient(
+            top,
+            rgb(134,135,140) 0%,
+            rgb(217,217,217) 41%,
+            rgb(134,135,140) 100%
+        );
+        background: -o-linear-gradient(
+            top,
+            rgb(134,135,140) 0%,
+            rgb(217,217,217) 41%,
+            rgb(134,135,140) 100%
+        );
 }
 .galleryHeaderPic
 {
@@ -65,31 +94,10 @@ p
     width: 35px;
     height: 20px;
     float: right;
-    background-color: black;
+    
     margin-right: 20px;
-    text-align: center; 
-}
-.galleryMain
-{
-    width: 350px;
-    height: 450px;
-    background-color: red;
-    overflow: auto;
-}
-
-.galleryFooter
-{
-    width: 350px;
-    height: 30px;
-    background-color: blue;  
-}
-.thumbdiv {
-    display: inline-block;
-    margin: 7px;
-    padding: 7px;
     text-align: center;
-    border: solid 1px #EEE;  
-    background: -webkit-gradient(linear,
+        background: -webkit-gradient(linear,
             left bottom,
             left top,
             color-stop(0, rgb(134,135,140)),
@@ -113,6 +121,81 @@ p
             rgb(134,135,140) 0%,
             rgb(217,217,217) 41%,
             rgb(134,135,140) 100%
+        );
+        -moz-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;
+    box-shadow: rgba(0,0,0, 0.3) 0 0 8px; 
+    -webkit-border-radius: 5px;  
+    -moz-border-radius: 5px;  
+    border-radius: 5px;
+}
+.galleryMain
+{
+    width: 350px;
+    height: 450px;
+    overflow: auto;
+}
+.galleryFooter
+{
+    width: 350px;
+    height: 30px;
+        background: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(217,217,217)),
+            color-stop(0, rgb(134,135,140)),
+            color-stop(1, rgb(217,217,217))
+        );
+        background: -webkit-linear-gradient(
+            bottom,
+            color-stop(0, rgb(217,217,217)),
+            color-stop(0, rgb(134,135,140)),
+            color-stop(1, rgb(217,217,217))
+        );
+        background: -moz-linear-gradient(
+            bottom,
+            rgb(134,135,140) 100%,
+            rgb(217,217,217) 59%,
+            rgb(134,135,140) 0%
+        );
+        background: -o-linear-gradient(
+            bottom,
+            rgb(134,135,140) 100%,
+            rgb(217,217,217) 59%,
+            rgb(134,135,140) 0%
+        );
+}
+.thumbdiv 
+{
+    display: inline-block;
+    margin: 7px;
+    padding: 7px;
+    text-align: center;
+    border: solid 1px #EEE;  
+    background: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(217,217,217)),
+            color-stop(0.41, rgb(134,135,140)),
+            color-stop(1, rgb(217,217,217))
+        );
+        background: -webkit-linear-gradient(
+            center bottom,
+            color-stop(0, rgb(217,217,217)),
+            color-stop(0.41, rgb(134,135,140)),
+            color-stop(1, rgb(217,217,217))
+        );
+        background: -moz-linear-gradient(
+            center bottom,
+            rgb(217,217,217)  0%,
+            rgb(134,135,140) 30%,
+            rgb(217,217,217) 100%
+        );
+        background: -o-linear-gradient(
+            center bottom,
+            rgb(217,217,217)  0%,
+            rgb(134,135,140) 30%,
+            rgb(217,217,217)  100%
         );
         -moz-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;  
     -webkit-box-shadow: rgba(0,0,0, 0.3) 0 0 8px;

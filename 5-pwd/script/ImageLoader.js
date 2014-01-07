@@ -31,7 +31,7 @@ ImageLoader.prototype.renderThumbs = function (thumbs) {
         thumbDiv.style.width = size.width + "px";
         thumbDiv.style.height = size.height + "px";
         
-        url = document.createElement("img");
+
         url.src = thumbs[i].URL;
     
         // Skapar tumnagelbilder
@@ -48,16 +48,13 @@ ImageLoader.prototype.renderThumbs = function (thumbs) {
     }
     function setBackground(i) {
         a.onclick=function() {
-            var hej = "\'url(" + i + ")\'";
             document.getElementById("container").style.backgroundImage = 'url('+i+')';
         };
     }
 
     // Tar fram tumnagelns bredd och höjd
     function setSize(thumbs) {
-        var width = 0,
-            height = 0,
-            t;
+        var width = 0, height = 0, t;
         
         for (t in thumbs) {
             if (thumbs[t].thumbWidth > width) {

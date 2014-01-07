@@ -13,7 +13,7 @@
     showGalleryImg.appendChild(galleryLink);
     galleryLink.appendChild(galleryImg);
     
-
+    openGallery();//Sätter onclick på galleryiconen
     var createGalleryPopup = function (){
             var div0 = document.createElement("div"),
             headerDiv = document.createElement("div"),
@@ -67,31 +67,16 @@
         var div0 = document.querySelector(".galleryContainer");
         
         continer.removeChild(div0);
+            openGallery();//Sätter onclick på galleryiconen efter att man öppnat den 1 gång.
+    };
+    function openGallery(e) {
         galleryLink.onclick = function(e){
             e = e || window.event;
             e.preventDefault();
-        
+            
             createGalleryPopup();
             new ImageLoader();
             galleryLink.setAttribute ("onclick", null);
         };
-    };
-    /*galleryLink.addEventListener("click", function(e){
-        e = e || window.event;
-        e.preventDefault();
-            
-        createGalleryPopup();
-        new ImageLoader();
-        galleryLink.setAttribute ("onclick", null);
-    
-    },false);*/
-    galleryLink.onclick = function(e){
-        e = e || window.event;
-        e.preventDefault();
-        
-        createGalleryPopup();
-        new ImageLoader();
-        galleryLink.setAttribute ("onclick", null);
-        };
-
+    }
 }());
