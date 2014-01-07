@@ -8,10 +8,11 @@ ImageLoader.prototype.getThumbPics = function () {
     // Sätter timer på ajaxanropet, en animerad gif-bild visas om anropet 
     //till servern drar ut på tiden
     $(document).ready(function () {
-        setTimeout(function () { $('#ajaxloader').show(); }, 300);
+        var removeTimeout = setTimeout(function () { $('#ajaxloader').show(); }, 300);
         $.ajax({
             url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/"
         }).done(function (data) {
+            clearTimeout(removeTimeout);
             $('#ajaxloader').hide();
             var thumbs = $.parseJSON(data);
             ImageLoader.prototype.renderThumbs(thumbs);
@@ -31,7 +32,7 @@ ImageLoader.prototype.renderThumbs = function (thumbs) {
         thumbDiv.style.width = size.width + "px";
         thumbDiv.style.height = size.height + "px";
         
-
+        url = document.createElement("img");
         url.src = thumbs[i].URL;
     
         // Skapar tumnagelbilder

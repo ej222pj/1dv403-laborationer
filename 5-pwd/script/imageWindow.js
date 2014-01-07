@@ -62,7 +62,6 @@
             removeGalleryPopup();
         }, false);
     };
-
     var removeGalleryPopup = function (){
         var div0 = document.querySelector(".galleryContainer");
         
@@ -79,4 +78,5 @@
             galleryLink.setAttribute ("onclick", null);
         };
     }
+    
 }());
