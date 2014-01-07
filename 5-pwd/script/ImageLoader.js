@@ -31,7 +31,8 @@ ImageLoader.prototype.renderThumbs = function (thumbs) {
         thumbDiv.style.width = size.width + "px";
         thumbDiv.style.height = size.height + "px";
         
-        url = thumbs[i].URL;
+        url = document.createElement("img");
+        url.src = thumbs[i].URL;
     
         // Skapar tumnagelbilder
         thumb = document.createElement("img");
@@ -43,12 +44,12 @@ ImageLoader.prototype.renderThumbs = function (thumbs) {
         thumbDiv.appendChild(a);
         contentDiv.appendChild(thumbDiv);
 
-        setBackground(url);
+        setBackground(url.src);
     }
     function setBackground(i) {
         a.onclick=function() {
-            var hej = "\'url( " + i + "\")\'";
-            document.getElementById("container").style.backgroundImage = hej;
+            var hej = "\'url(" + i + ")\'";
+            document.getElementById("container").style.backgroundImage = 'url('+i+')';
         };
     }
 
