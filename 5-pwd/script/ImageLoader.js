@@ -1,31 +1,30 @@
 "Use strict";
 var ImageLoader = function () {
-    ImageLoader.prototype.getThumbPics();
+    getpicsFromServer();
 };
 
-// Ajaxanrop som kommer att returnera JSON-sträng med tumnagelbilder 
-ImageLoader.prototype.getThumbPics = function () {
-    // Sätter timer på ajaxanropet, en animerad gif-bild visas om anropet 
-    //till servern drar ut på tiden
+// Ajaxanrop som kommer att returnera JSON-sträng med info 
+var getpicsFromServer = function () {
+    // Sätter timer på ajaxanropet, en animerad gif-bild visas om anropet till servern drar ut på tiden
     $(document).ready(function () {
-        var removeTimeout = setTimeout(function () { $('#ajaxloader').show(); }, 300);
-        $.ajax({
+        var removeTimeout = setTimeout(function () { $('#ajaxloader').show(); }, 300);//Sätter timern efter 300Ms
+        $.ajax({//Skickar urlen
             url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/"
         }).done(function (data) {
-            clearTimeout(removeTimeout);
-            $('#ajaxloader').hide();
-            var thumbs = $.parseJSON(data);
-            ImageLoader.prototype.renderThumbs(thumbs);
+            clearTimeout(removeTimeout);//Tar bort timouten om laddningen går snabbare
+            $('#ajaxloader').hide();//Gömmer laddningsgifen när anropet är klart
+            var info = $.parseJSON(data); //Tar JSON strängen och "översätter" den till JavaScript koden
+            renderPics(info);
         }).fail(function (jqXHR, textStatus) {
             console.log("Läsfel, status: " + textStatus);
         }); 
     });
 };
 		
-ImageLoader.prototype.renderThumbs = function (thumbs) {
-    var thumbDiv, thumb, a, i, contentDiv = document.querySelector(".galleryMain"), size = setSize(thumbs), url;
+var renderPics = function (info) {
+    var thumbDiv, thumb, a, i, contentDiv = document.querySelector(".galleryMain"), size = setSize(info), url;
 
-    for (i = 0; i < thumbs.length; ++i) {
+    for (i = 0; i < info.length; ++i) {
         // Skapar boxar till tumnaglarna    
         thumbDiv = document.createElement("div");
         thumbDiv.className = "thumbdiv";
@@ -33,14 +32,14 @@ ImageLoader.prototype.renderThumbs = function (thumbs) {
         thumbDiv.style.height = size.height + "px";
         
         url = document.createElement("img");
-        url.src = thumbs[i].URL;
+        url.src = info[i].URL;
     
         // Skapar tumnagelbilder
         thumb = document.createElement("img");
         a = document.createElement("a");
         a.setAttribute("href", "#");
         a.setAttribute("id", i);
-        thumb.src = thumbs[i].thumbURL;
+        thumb.src = info[i].thumbURL;
         a.appendChild(thumb);
         thumbDiv.appendChild(a);
         contentDiv.appendChild(thumbDiv);
