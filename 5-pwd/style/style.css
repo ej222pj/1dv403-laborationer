@@ -28,6 +28,11 @@ body
     margin-left: 10px;
     margin-bottom: 10px;
 }
+.menuPicGallery:hover
+{
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+}
 .galleryContainer
 {
     position: absolute;
@@ -205,6 +210,34 @@ p
     -webkit-border-radius: 5px;  
     -moz-border-radius: 5px;  
     border-radius: 5px;
+}
+.thumbdiv:hover
+{
+    background: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(217,217,217)),
+            color-stop(0.51, rgb(134,135,140)),
+            color-stop(1, rgb(217,217,217))
+        );
+        background: -webkit-linear-gradient(
+            center bottom,
+            color-stop(0, rgb(217,217,217)),
+            color-stop(0.51, rgb(134,135,140)),
+            color-stop(1, rgb(217,217,217))
+        );
+        background: -moz-linear-gradient(
+            center bottom,
+            rgb(217,217,217)  0%,
+            rgb(134,135,140) 50%,
+            rgb(217,217,217) 100%
+        );
+        background: -o-linear-gradient(
+            center bottom,
+            rgb(217,217,217)  0%,
+            rgb(134,135,140) 50%,
+            rgb(217,217,217)  100%
+        );
 }
 #ajaxloader
 {

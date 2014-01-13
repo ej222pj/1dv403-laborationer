@@ -1,10 +1,9 @@
 "use strict";
 (function () {
-    var continer = document.querySelector("#container");
-    var showGalleryImg = document.querySelector(".bottomMenu");
-    
-    var galleryLink = document.createElement("a");
-    var galleryImg = document.createElement("img");
+    var continer = document.querySelector("#container"),
+    showGalleryImg = document.querySelector(".bottomMenu"),
+    galleryLink = document.createElement("a"),
+    galleryImg = document.createElement("img");
     
     galleryLink.setAttribute("href", "#");
     galleryImg.setAttribute("src", "pics/icon_sm_img.png");
@@ -65,7 +64,7 @@
     var removeGalleryPopup = function (){
         var div0 = document.querySelector(".galleryContainer");
         
-        continer.removeChild(div0);
+        continer.removeChild(div0);//Plockar bort hela gallery containern
             openGallery();//Sätter onclick på galleryiconen efter att man öppnat den 1 gång.
     };
     function openGallery(e) {
@@ -78,5 +77,4 @@
             galleryLink.setAttribute ("onclick", null);
         };
     }
-    
 }());

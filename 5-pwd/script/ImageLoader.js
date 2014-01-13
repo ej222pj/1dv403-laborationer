@@ -13,7 +13,7 @@ var getpicsFromServer = function () {
         }).done(function (data) {
             clearTimeout(removeTimeout);//Tar bort timouten om laddningen går snabbare
             $('#ajaxloader').hide();//Gömmer laddningsgifen när anropet är klart
-            var info = $.parseJSON(data); //Tar JSON strängen och "översätter" den till JavaScript koden
+            var info = $.parseJSON(data); //Tar JSON strängen och "översätter" den till JavaScript kod
             renderPics(info);
         }).fail(function (jqXHR, textStatus) {
             console.log("Läsfel, status: " + textStatus);
