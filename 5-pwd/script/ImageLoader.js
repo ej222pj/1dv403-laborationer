@@ -47,7 +47,9 @@ var renderPics = function (info) {
         setBackground(url.src);
     }
     function setBackground(i) {
-        a.onclick=function() {
+        a.onclick=function(e) {
+            e = e || window.event;
+            e.preventDefault();
             document.getElementById("container").style.backgroundImage = 'url('+i+')';
         };
     }
